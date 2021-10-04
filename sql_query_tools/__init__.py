@@ -737,3 +737,6 @@ class Postgres(object):
             val = "'" + val + "'"
 
         return val
+
+from . import _version
+__version__ = _version.get_versions()['version']
