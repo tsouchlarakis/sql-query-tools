@@ -88,7 +88,7 @@ def logger_setup(name: str=__name__, level: int=logging.DEBUG) -> logging.Logger
 logger = logger_setup(name='sql-query-tools.utils', level=logging.WARNING)
 
 
-def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
+def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
     """
     Test if a value is an instance of type `dtype`. May accept a value of any kind.
 

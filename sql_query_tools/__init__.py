@@ -2,8 +2,6 @@
 
 __author__ = """Andoni Sooklaris"""
 __email__ = 'andoni.sooklaris@gmail.com'
-__version__ = '0.1.0'
-
 
 import csv
 import logging
@@ -13,7 +11,7 @@ import pathlib
 import sqlalchemy
 import typing
 from tqdm import tqdm
-from .utils import logger_setup, test_value, ensurelist, systime, find_binary, syscmd, listfiles
+from .utils import logger_setup, assert_value_dtype, ensurelist, systime, find_binary, syscmd, listfiles
 
 
 logger = logger_setup(name='sql-query-tools', level=logging.WARNING)
@@ -335,7 +333,7 @@ class Postgres(object):
 
             if str(val).lower() in self.null_equivalents:
                 val = 'NULL'
-            elif test_value(val, 'bool') or test_value(val, 'int') or test_value(val, 'float'):
+            elif assert_value_dtype(val, 'bool') or assert_value_dtype(val, 'int') or assert_value_dtype(val, 'float'):
                 pass
             else:
                 # Assume string
@@ -402,7 +400,7 @@ class Postgres(object):
             if str(val).lower() in self.null_equivalents:
                 val = 'null'
 
-            elif test_value(val, 'bool') or test_value(val, 'int') or test_value(val, 'float'):
+            elif assert_value_dtype(val, 'bool') or assert_value_dtype(val, 'int') or assert_value_dtype(val, 'float'):
                 pass
             else:
                 # Assume string, handle quotes
