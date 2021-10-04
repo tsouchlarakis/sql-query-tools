@@ -3,7 +3,7 @@
 .. role:: raw-html(raw)
     :format: html
 
-Convenient utilities for querying various flavors of SQL databases.
+Convenient utilities for reading from and writing to Postgres SQL databases.
 
 :raw-html:`<br />`
 
