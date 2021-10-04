@@ -88,7 +88,7 @@ def logger_setup(name: str=__name__, level: int=logging.DEBUG) -> logging.Logger
 logger = logger_setup(name='sql-query-tools.utils', level=logging.WARNING)
 
 
-def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> True:
+def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
     """
     Test if a value is an instance of type `dtype`. May accept a value of any kind.
 
@@ -332,7 +332,7 @@ def listfiles(path: typing.Union[str, pathlib.Path]='.',
     return fpaths
 
 
-def ensurelist(val: typing.Any):
+def ensurelist(val: typing.Any) -> list:
     """
     Accept a string or list and ensure that it is formatted as a list. If `val` is not a list,
     return [val]. If `val` is already a list, return as is.
@@ -340,7 +340,7 @@ def ensurelist(val: typing.Any):
     return [val] if not isinstance(val, list) else val
 
 
-def systime(as_string: bool=True, compact: bool=False):
+def systime(as_string: bool=True, compact: bool=False) -> typing.Union[str, datetime.datetime]:
     """
     Get the current datetime, optionally formatted as a string.
     """
@@ -354,7 +354,7 @@ def systime(as_string: bool=True, compact: bool=False):
 def find_binary(bin_name: str,
                 additional_bin_paths: list=[],
                 abort: bool=False,
-                return_all: bool=False):
+                return_all: bool=False) -> typing.Union[str, list]:
     """
     Find system binary by name. If multiple binaries found, return the first one found unless `return_all` is True, in which case return a list of binaries found. If `abort` is True,
     then raise an error in the case that the desired binary is not found.
@@ -409,7 +409,7 @@ def find_binary(bin_name: str,
     return match[0]
 
 
-def syscmd(cmd: typing.Union[str, list], encoding: str=''):
+def syscmd(cmd: typing.Union[str, list], encoding: str='') -> typing.Union[str, int]:
     """
     Runs a command on the system, waits for the command to finish, and then returns the
     text output of the command. If the command produces no text output, the command's

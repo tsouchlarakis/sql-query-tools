@@ -105,3 +105,9 @@ ENV/
 .vscode/
 .idea/
 .editorconfig
+
+# macOS stuff
+**/*.DS_Store
+
+# Graphics stuff
+**/*.afphoto

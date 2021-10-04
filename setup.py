@@ -2,6 +2,7 @@
 
 """The setup script."""
 
+import versioneer
 from setuptools import setup, find_packages
 
 with open('README.rst') as readme_file:
@@ -31,7 +32,8 @@ setup(
     description="Convenient utilities for querying various flavors of SQL databases.",
     install_requires=requirements,
     license="MIT license",
-    long_description=readme + '\n\n' + history,
+    # long_description_content_type='text/x-rst',
+    # long_description=readme + '\n\n' + history,
     include_package_data=True,
     keywords='sql_query_tools',
     name='sql_query_tools',
@@ -39,6 +41,7 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/tsouchlarakis/sql_query_tools',
-    version='0.1.0',
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     zip_safe=False,
 )
