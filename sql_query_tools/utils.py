@@ -431,7 +431,6 @@ def syscmd(cmd: typing.Union[str, list], encoding: str='') -> typing.Union[str, 
         else:
             return output
     else:
-        logger.var('output', output)
         logger.warning('Length of `output` is <=1, returning the process returncode')
 
         return p.returncode

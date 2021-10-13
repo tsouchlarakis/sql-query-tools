@@ -10,4 +10,4 @@ Changelog
 ------------------
 
 - First release on PyPI
-- Migration from ``pydoni`` package
+- Migration from ``doni_utils`` package

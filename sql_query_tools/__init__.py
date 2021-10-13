@@ -1,5 +1,9 @@
 """Top-level package for SQL Query Tools."""
 
+from . import _version
+__version__ = _version.get_versions()['version']
+
+
 __author__ = """Andoni Sooklaris"""
 __email__ = 'andoni.sooklaris@gmail.com'
 
@@ -502,14 +506,14 @@ class Postgres(object):
            statement TEXT;
         BEGIN
         FOR tables IN
-           SELECT (table_schema || '.' || table_name) AS schema_table
+           SELECT ('"' || table_schema || '"' || '.' || '"' || table_name || '"') AS schema_table
            FROM information_schema.tables t
                INNER JOIN information_schema.schemata s ON s.schema_name = t.table_schema
            WHERE t.table_schema NOT IN ('pg_catalog', 'information_schema')
                AND t.table_type NOT IN ('VIEW')
            ORDER BY schema_table
         LOOP
-           statement := 'COPY ' || tables.schema_table || ' TO ''' || path || '/' || tables.schema_table || '.tmpcsv' ||''' DELIMITER ''{sep}'' CSV HEADER';
+           statement := 'COPY ' || tables.schema_table || ' TO ''' || path || '/' || replace(tables.schema_table, '"', '') || '.csv' ||''' DELIMITER ''{sep}'' CSV HEADER';
            EXECUTE statement;
         END LOOP;
         RETURN;
@@ -735,6 +739,3 @@ class Postgres(object):
             val = "'" + val + "'"
 
         return val
-
-from . import _version
-__version__ = _version.get_versions()['version']
