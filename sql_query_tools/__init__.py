@@ -589,7 +589,7 @@ class Postgres(object):
         """
         Drop then re-create a Postgres schema
         """
-        args = dict(table_scham=schema_name, if_exists=if_exists, cascade=cascade)
+        args = dict(schema_name=schema_name, if_exists=if_exists, cascade=cascade)
         self.drop_schema(**args)
         self.create_schema(schema_name)
 
