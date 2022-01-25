@@ -88,7 +88,7 @@ def logger_setup(name: str=__name__, level: int=logging.DEBUG) -> logging.Logger
 logger = logger_setup(name='sql-query-tools.utils', level=logging.WARNING)
 
 
-def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
+def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
     """
     Test if a value is an instance of type `dtype`. May accept a value of any kind.
 
@@ -266,11 +266,11 @@ def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, 
 
     # Close function
     if coerced_value is None:
-        error_str = f"Unable to coerce value '{str(value)}' (dtype: {type(value).__name__}) to {dtype}"
-        logger.warning(error_str)
+        debug_str = f"Unable to coerce value '{str(value)}' (dtype: {type(value).__name__}) to {dtype}"
+        logger.debug(debug_str)
 
         if return_coerced_value:
-            raise ValueError(error_str)
+            raise ValueError(debug_str)
         else:
             return False
 
@@ -431,7 +431,6 @@ def syscmd(cmd: typing.Union[str, list], encoding: str='') -> typing.Union[str, 
         else:
             return output
     else:
-        logger.var('output', output)
         logger.warning('Length of `output` is <=1, returning the process returncode')
 
         return p.returncode

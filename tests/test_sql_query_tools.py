@@ -129,9 +129,9 @@ class TestSQLQueryTools(unittest.TestCase):
             #
 
             pid = getpid()
-            test_schema_name = f'test_pydoni_schema_{pid}'
-            test_table_name = f'test_pydoni_table_{pid}'
-            test_view_name = f'test_pydoni_view_{pid}'
+            test_schema_name = f'test_schema_{pid}'
+            test_table_name = f'test_table_{pid}'
+            test_view_name = f'test_view_{pid}'
 
             pg.create_schema(schema_name=test_schema_name)
 

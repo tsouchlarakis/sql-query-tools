@@ -2,6 +2,15 @@
 Changelog
 =========
 
+0.1.4 (2022-01-24)
+
+- Function renames
+- Versioning change
+- Updated setup
+- Typo fixes
+- Requirements updates
+- Warning to debug message in utils
+
 0.1.1 (2021-10-04)
 
 - Integrated ``versioneer``
@@ -10,4 +19,4 @@ Changelog
 ------------------
 
 - First release on PyPI
-- Migration from ``pydoni`` package
+- Migration from ``doni_utils`` package
