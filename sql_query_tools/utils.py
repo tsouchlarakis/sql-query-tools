@@ -266,11 +266,11 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
 
     # Close function
     if coerced_value is None:
-        error_str = f"Unable to coerce value '{str(value)}' (dtype: {type(value).__name__}) to {dtype}"
-        logger.warning(error_str)
+        debug_str = f"Unable to coerce value '{str(value)}' (dtype: {type(value).__name__}) to {dtype}"
+        logger.debug(debug_str)
 
         if return_coerced_value:
-            raise ValueError(error_str)
+            raise ValueError(debug_str)
         else:
             return False
 
