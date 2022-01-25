@@ -85,7 +85,7 @@ def logger_setup(name: str=__name__, level: int=logging.DEBUG) -> logging.Logger
     return logger
 
 
-logger = logger_setup(name='sql-query-tools.utils', level=logging.WARNING)
+logger = logger_setup(name='sql-query-tools.utils', level=logging.ERROR)
 
 
 def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> bool:
@@ -174,7 +174,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
             if stop:
                 raise e
             else:
-                logger.warning(str(e))
+                logger.debug(str(e))
 
     # Test integer
     elif dtype in ['int', 'integer']:
@@ -189,7 +189,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
                 if stop:
                     raise e
                 else:
-                    logger.warning(str(e))
+                    logger.debug(str(e))
 
     # Test float
     elif dtype == 'float':
@@ -202,7 +202,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
                 if stop:
                     raise e
                 else:
-                    logger.warning(str(e))
+                    logger.debug(str(e))
 
     # Test date
     elif dtype == 'date':
@@ -374,7 +374,7 @@ def find_binary(bin_name: str,
         None
     """
     bin_paths = [x for x in sys.path if os.path.basename(x) in ['bin', 'lib']] + \
-        ['/usr/bin', '/usr/local/bin']
+        ['/usr/bin', '/usr/local/bin', '/opt/homebrew/bin']
 
     if len(additional_bin_paths):
         bin_paths = bin_paths + additional_bin_paths

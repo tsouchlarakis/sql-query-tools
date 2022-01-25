@@ -18,7 +18,7 @@ from tqdm import tqdm
 from .utils import logger_setup, assert_value_dtype, ensurelist, systime, find_binary, syscmd, listfiles
 
 
-logger = logger_setup(name='sql-query-tools', level=logging.WARNING)
+logger = logger_setup(name='sql-query-tools', level=logging.ERROR)
 
 
 class Postgres(object):
